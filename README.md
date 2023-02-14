@@ -1,1 +1,1 @@
-# digital-elecronics-1
+# digital-electronics-1
