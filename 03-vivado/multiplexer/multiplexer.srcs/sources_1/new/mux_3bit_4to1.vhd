@@ -1,61 +1,53 @@
-------------------------------------------------------------
---
---! @title Binary comparator
---! @author Tomas Fryza
---! Dept. of Radio Electronics, Brno Univ. of Technology, Czechia
---!
---! @copyright (c) 2020 Tomas Fryza
---! This work is licensed under the terms of the MIT license
---!
---! Four-bit binary comparator using when/else
---! assignments. The comparator can distinguish three states
---! between two 4-bit inputs: greater than, equal, and less than.
---!
---! Wavedrom example:
---! {signal: [
---! {name: 'b[3:0]', wave: 'x333333', data: ['0','3','8','9','a','7']},
---! {name: 'a[3:0]', wave: 'x333333', data: ['0','c','9','3','a','6']},
---! {},
---! {name: 'B_greater_A', wave: 'xl..hlh'},
---! {name: 'B_equals_A',  wave: 'xhl..hl'},
---! {name: 'B_less_A',    wave: 'xlh.l..'},
---! ]}
---
--- Hardware: Nexys A7-50T, xc7a50ticsg324-1L
--- Software: TerosHDL, Vivado 2020.2
---
-------------------------------------------------------------
+----------------------------------------------------------------------------------
+-- Company: 
+-- Engineer: 
+-- 
+-- Create Date: 23.02.2023 14:09:04
+-- Design Name: 
+-- Module Name: mux_3bit_4to1 - Behavioral
+-- Project Name: 
+-- Target Devices: 
+-- Tool Versions: 
+-- Description: 
+-- 
+-- Dependencies: 
+-- 
+-- Revision:
+-- Revision 0.01 - File Created
+-- Additional Comments:
+-- 
+----------------------------------------------------------------------------------
 
-library ieee;
-  use ieee.std_logic_1164.all;
 
-------------------------------------------------------------
--- Entity declaration for 4-bit binary comparator
-------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
 
-entity comparator_4bit is
-  port (
-    d_i           : in    std_logic_vector(2 downto 0);
-    c_i           : in    std_logic_vector(2 downto 0);
-    b_i           : in    std_logic_vector(2 downto 0);
-    a_i           : in    std_logic_vector(2 downto 0); 
-    sel_i         : in    std_logic_vector(1 downto 0);
-    f_o           : out   std_logic                                  
-  );
-end entity comparator_4bit;
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--use IEEE.NUMERIC_STD.ALL;
 
-------------------------------------------------------------
--- Architecture body for 4-bit binary comparator
-------------------------------------------------------------
+-- Uncomment the following library declaration if instantiating
+-- any Xilinx leaf cells in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
 
-architecture behavioral of comparator_4bit is
+entity mux_3bit_4to1 is
+    Port ( sel_i : in STD_LOGIC_VECTOR (1 downto 0);
+           a_i : in STD_LOGIC_VECTOR (2 downto 0);
+           b_i : in STD_LOGIC_VECTOR (2 downto 0);
+           c_i : in STD_LOGIC_VECTOR (2 downto 0);
+           d_i : in STD_LOGIC_VECTOR (2 downto 0);
+           y_o : out STD_LOGIC_VECTOR (2 downto 0));
+end mux_3bit_4to1;
+
+architecture Behavioral of mux_3bit_4to1 is
 
 begin
+y_o <= a_i when (sel_i = "00" ) else
+       b_i when (sel_i = "01" ) else
+       c_i when (sel_i = "10" ) else
+       d_i;             -- All other combinations
 
- with sel_i select
-    f_o <= a_i when "00",
-           b_i when "01",
-           c_i when "10", 
-           d_i when others; 
-           
-end architecture behavioral;
+
+
+end Behavioral;

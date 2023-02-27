@@ -1,0 +1,18 @@
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+Note: Stimulus process started
+Time: 0 ps  Iteration: 0  Process: /tb_mux_3bit_4to1/p_stimulus  File: C:/Users/Barbora/Desktop/de1/digital-electronics-1/03-vivado/multiplexer/multiplexer.srcs/sim_1/new/tb_mux_3bit_4to1.vhd
+Error: Input combination y=b FAILED
+Time: 100 ns  Iteration: 0  Process: /tb_mux_3bit_4to1/p_stimulus  File: C:/Users/Barbora/Desktop/de1/digital-electronics-1/03-vivado/multiplexer/multiplexer.srcs/sim_1/new/tb_mux_3bit_4to1.vhd
+Error: Input combination y=c FAILED
+Time: 200 ns  Iteration: 0  Process: /tb_mux_3bit_4to1/p_stimulus  File: C:/Users/Barbora/Desktop/de1/digital-electronics-1/03-vivado/multiplexer/multiplexer.srcs/sim_1/new/tb_mux_3bit_4to1.vhd
+Error: Input combination y=d FAILED
+Time: 300 ns  Iteration: 0  Process: /tb_mux_3bit_4to1/p_stimulus  File: C:/Users/Barbora/Desktop/de1/digital-electronics-1/03-vivado/multiplexer/multiplexer.srcs/sim_1/new/tb_mux_3bit_4to1.vhd
+Error: Input combination y=c FAILED
+Time: 500 ns  Iteration: 0  Process: /tb_mux_3bit_4to1/p_stimulus  File: C:/Users/Barbora/Desktop/de1/digital-electronics-1/03-vivado/multiplexer/multiplexer.srcs/sim_1/new/tb_mux_3bit_4to1.vhd
+Error: Input combination y=b FAILED
+Time: 600 ns  Iteration: 0  Process: /tb_mux_3bit_4to1/p_stimulus  File: C:/Users/Barbora/Desktop/de1/digital-electronics-1/03-vivado/multiplexer/multiplexer.srcs/sim_1/new/tb_mux_3bit_4to1.vhd
+Error: Input combination y=a FAILED
+Time: 700 ns  Iteration: 0  Process: /tb_mux_3bit_4to1/p_stimulus  File: C:/Users/Barbora/Desktop/de1/digital-electronics-1/03-vivado/multiplexer/multiplexer.srcs/sim_1/new/tb_mux_3bit_4to1.vhd
+Note: Stimulus process finished
+Time: 700 ns  Iteration: 0  Process: /tb_mux_3bit_4to1/p_stimulus  File: C:/Users/Barbora/Desktop/de1/digital-electronics-1/03-vivado/multiplexer/multiplexer.srcs/sim_1/new/tb_mux_3bit_4to1.vhd
