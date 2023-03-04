@@ -15,26 +15,25 @@
 -- Hardware: Nexys A7-50T, xc7a50ticsg324-1L
 -- Software: TerosHDL, Vivado 2020.2
 
-library ieee;
-  use ieee.std_logic_1164.all;
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
 
-------------------------------------------------------------
--- Entity declaration for seven7-segment display decoder
-------------------------------------------------------------
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--use IEEE.NUMERIC_STD.ALL;
+
+-- Uncomment the following library declaration if instantiating
+-- any Xilinx leaf cells in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
 
 entity hex_7seg is
-  port (
-    blank : in    std_logic;                    --! Display is clear if blank = 1
-    hex   : in    std_logic_vector(3 downto 0); --! Binary representation of one hexadecimal symbol
-    seg   : out   std_logic_vector(6 downto 0)  --! Seven active-low segments in the order: a, b, ..., g
-  );
-end entity hex_7seg;
+    Port ( blank : in STD_LOGIC;
+           hex : in STD_LOGIC_VECTOR (3 downto 0);
+           seg : out STD_LOGIC_VECTOR (6 downto 0));
+end hex_7seg;
 
-------------------------------------------------------------
--- Architecture body for seven-segment display decoder
-------------------------------------------------------------
-
-architecture behavioral of hex_7seg is
+architecture Behavioral of hex_7seg is
 
 begin
 
@@ -75,29 +74,30 @@ begin
 
         -- WRITE YOUR CODE HERE
         -- 2, 3, 4, 5, 6, 7
-        when "0010" =>
+        
+         when "0010" =>
 
           seg <= "0010010"; -- 2
 
         when "0011" =>
 
           seg <= "0000110"; -- 3
-
-        when "0100" =>
+          
+         when "0100" =>
 
           seg <= "1001100"; -- 4
-
-        when "0101" =>
+          
+         when "0101" =>
 
           seg <= "0100100"; -- 5
-
-        when "0110" =>
+          
+         when "0110" =>
 
           seg <= "0100000"; -- 6
+          
+         when "0111" =>
 
-        when "0111" =>
-
-          seg <= "0001111"; -- 7
+          seg <= "0001111"; -- 6
 
         when "1000" =>
 
@@ -105,26 +105,28 @@ begin
 
         -- WRITE YOUR CODE HERE
         -- 9, A, b, C, d
+        
         when "1001" =>
 
           seg <= "0000100"; -- 9
-
+          
+        
         when "1010" =>
 
-          seg <= "0001000"; -- A (10)
-
+          seg <= "0001000"; -- A
+          
         when "1011" =>
 
-          seg <= "1100000"; -- b (11)
-
+          seg <= "1100000"; -- b
+          
         when "1100" =>
 
-          seg <= "0110001"; -- C (12)
-
+          seg <= "0110001"; -- C
+          
         when "1101" =>
 
-          seg <= "1000010"; -- d (13)
-
+          seg <= "1000010"; -- d
+          
         when "1110" =>
 
           seg <= "0110000"; -- E
@@ -136,7 +138,7 @@ begin
       end case;
 
     end if;
-
+    
   end process p_7seg_decoder;
-
-end architecture behavioral;
+  
+end Behavioral;
