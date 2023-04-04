@@ -40,10 +40,11 @@ architecture testbench of tb_tlc is
   constant c_CLK_100MHZ_PERIOD : time := 10 ns;
 
   -- Local signals
-  signal sig_clk_100mhz : std_logic;
-  signal sig_rst        : std_logic;
-  signal sig_south      : std_logic_vector(2 downto 0);
-  signal sig_west       : std_logic_vector(2 downto 0);
+  signal sig_clk_100mhz   : std_logic;
+  signal sig_rst          : std_logic;
+  signal sig_south        : std_logic_vector(2 downto 0);
+  signal sig_west         : std_logic_vector(2 downto 0);
+  signal sig_speed_button : std_logic;
 
 begin
 
@@ -54,7 +55,8 @@ begin
       clk   => sig_clk_100mhz,
       rst   => sig_rst,
       south => sig_south,
-      west  => sig_west
+      west  => sig_west,
+      speed_button => sig_speed_button
     );
 
   --------------------------------------------------------
@@ -83,17 +85,42 @@ begin
   begin
 
     sig_rst <= '0';
-    wait for 200 ns;
+    wait for 350 ns;
 
     -- Reset activated
     sig_rst <= '1';
-    wait for 500 ns;
+    wait for 200 ns;
 
     -- Reset deactivated
     sig_rst <= '0';
     wait;
 
   end process p_reset_gen;
+
+--------------------------------------------------------
+  -- Speed button  process
+  --------------------------------------------------------
+  p_priority_WEST_gen : process is
+  begin
+
+    sig_speed_button <= '0';
+    wait for 600 ns;
+
+    -- Reset activated
+    sig_speed_button <= '1';
+    wait for 50 ns;
+
+    -- Reset deactivated
+    sig_speed_button <= '0';
+    wait for 400 ns;
+    
+    sig_speed_button <= '1';
+    wait for 100 ns;
+    
+    sig_speed_button <= '0';
+    wait;
+
+  end process p_priority_WEST_gen;
 
   --------------------------------------------------------
   -- Data generation process
