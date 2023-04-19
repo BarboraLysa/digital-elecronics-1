@@ -59,41 +59,41 @@ begin
         port map(
             clk     => CLK100MHZ,
             reset     => BTNC,
-            smp_i   => BTNU,
-            smp2_i  => JB,
+            input1_i   => BTNU,
+            input2_i  => JB,
             rise_o => s_rise,
             fall_o => s_fall,
             switch_i => SW             
         );
         
-     stopwatch_seconds : entity work.stopwatch_seconds
-        port map(
-            clk            => CLK100MHZ,
-            reset          => BTNC,
-            start_i        => s_rise,
-            pause_i        => s_fall,
-            seconds_h_o    => s_seconds_h,
-            seconds_l_o    => s_seconds_l,
-            hundredths_h_o => s_hundredths_h,
-            hundredths_l_o => s_hundredths_l
-        );
+    -- stopwatch_seconds : entity work.stopwatch_seconds
+      --  port map(
+      --      clk            => CLK100MHZ,
+      --      reset          => BTNC,
+      --      start_i        => s_rise,
+      --      pause_i        => s_fall,
+      --      seconds_h_o    => s_seconds_h,
+      --      seconds_l_o    => s_seconds_l,
+      --      hundredths_h_o => s_hundredths_h,
+      --      hundredths_l_o => s_hundredths_l
+      --  );
         
-      stopwatch_seconds2 : entity work.stopwatch_seconds2
+    -- stopwatch_seconds2 : entity work.stopwatch_seconds2
+      --  port map(
+      --      clk            => CLK100MHZ,
+      --     reset          => BTNC,
+      --      start_i        => s_fall,
+      --      pause_i        => s_rise,
+      --      seconds_h_o    => s_seconds_h2,
+      --      seconds_l_o    => s_seconds_l2,
+      --      hundredths_h_o => s_hundredths_h2,
+      --      hundredths_l_o => s_hundredths_l2,
+      --      dec_reset => s_dec_reset
+      --  ); 
+       decoder_1 : entity work.decoder_1
         port map(
             clk            => CLK100MHZ,
-            reset          => BTNC,
-            start_i        => s_fall,
-            pause_i        => s_rise,
-            seconds_h_o    => s_seconds_h2,
-            seconds_l_o    => s_seconds_l2,
-            hundredths_h_o => s_hundredths_h2,
-            hundredths_l_o => s_hundredths_l2,
-            dec_reset => s_dec_reset
-        ); 
-       decoder : entity work.decoder
-        port map(
-            clk            => CLK100MHZ,
-            reset          => BTNC,
+            rst            => BTNC,
             seconds_h_i    => s_seconds_h,
             seconds_l_i    => s_seconds_l,
             hundredths_h_i => s_hundredths_h,
@@ -104,10 +104,10 @@ begin
             dash_o => s_dash,
             en_o   => s_en
         ); 
-      decoder2 : entity work.decoder2
+      decoder_2 : entity work.decoder_2
         port map(
             clk            => CLK100MHZ,
-            reset          => BTNC,
+            rst            => BTNC,
             seconds_h_i    => s_seconds_h2,
             seconds_l_i    => s_seconds_l2,
             hundredths_h_i => s_hundredths_h2,

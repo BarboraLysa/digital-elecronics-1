@@ -21,6 +21,7 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use ieee.numeric_std.all;
 
 --zadaní prom?nných
 
@@ -41,12 +42,12 @@ end decoder_1;
 architecture Behavioral of decoder_1 is
             
             signal s_enbl: std_logic;
-            
+           
   begin  p_decoder_1: process(clk)
     
-begin
+ begin
 
-    if rising_edge(clk) then
+ if rising_edge(clk) then
      -- ve p?ipad? resetování <= vynulování
      if (rst = '1') then 
         enbl <= '0';
@@ -54,27 +55,26 @@ begin
         dot <= '0';
         
      -- kontrola je-li to te?ka
-     else if (fall = '1') then
+     elsif (fall = '1') then
         if(time_dash <= "0001" and bin_dot >= "0001") then 
            dash <= '1';
            dot <= '1';
          
      -- když ne, je to ?arka
-        else if(time_dash > "0001") then 
+        elsif(time_dash > "0001") then 
            dash <= '1';
            dot <= '1';
-       
+        end if;
      
      -- znovu vynulovani
         
-        else 
+     else 
             enbl <= '0';
             dash <= '0';
             dot <= '0';
             
         
-  end if;
- end if;
+     end if;
  end if;
       
       end process p_decoder_1;
