@@ -33,7 +33,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity edge_detect is
   Port (  clk : in STD_LOGIC;
-           reset : in STD_LOGIC;
+           rst : in STD_LOGIC;
            input1_i : in STD_LOGIC; -- input tlacitka
            switch_i : in STD_LOGIC; -- prepinanie medzi inputom tlacitka a druhej dosky
            input2_i : in STD_LOGIC; -- input z druhej dosky
@@ -56,5 +56,12 @@ begin
         end if;
     end process p_edge_detect;
     
+    d_ff0: entity work.d_ff_rst
+    port map(
+    clk => clk,
+    rst=> reset,
+    d => s_input_i,
+    q => s_input_o(1)
+    );
     
 end Behavioral;
